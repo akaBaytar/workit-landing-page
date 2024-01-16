@@ -1,0 +1,76 @@
+@use '../util/' as util;
+
+.hero {
+  position: relative;
+  text-align: center;
+  background-color: var(--color-dark-purple);
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  @include util.breakpoint(md) {
+    &::before {
+      top: 0;
+      left: 0;
+      width: util.rem(270);
+      height: util.rem(217);
+      translate: -35% 0;
+      background-image: url('../../assets/images/bg-pattern-1.svg');
+    }
+
+    &::after {
+      bottom: 50%;
+      right: 0;
+      width: util.rem(113);
+      height: util.rem(141);
+      translate: 35% 0;
+      background-image: url('../../assets/images/bg-pattern-2.svg');
+    }
+  }
+
+  &__wrapper {
+    margin-block-end: util.rem(60);
+
+
+    @include util.breakpoint(lg) {
+      margin-block-end: util.rem(50);
+    }
+  }
+
+  &__headline {
+    margin-inline: auto;
+    max-width: 11ch;
+    color: var(--color-white);
+    margin-block-end: util.rem(40);
+
+    @include util.breakpoint(md) {
+      max-width: 12ch;
+    }
+
+    span {
+      display: inline-block;
+      border-bottom: solid util.rem(3) var(--color-green);
+    }
+  }
+
+  &__curved {
+    padding-inline: util.rem(32);
+    background: linear-gradient(
+      var(--color-dark-purple) 50%,
+      var(--color-whitish) 50%
+    );
+  }
+
+  &__image {
+    margin-inline: auto;
+    position: relative;
+    z-index: 1;
+  }
+}

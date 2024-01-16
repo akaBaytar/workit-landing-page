@@ -1,0 +1,75 @@
+@use '../util' as util;
+.features {
+  background-color: var(--color-whitish);
+  padding-block-start: clamp(
+    util.rem(64),
+    3.1594827586206895rem + 3.5862068965517238vw,
+    util.rem(90)
+  );
+  padding-block-end: clamp(
+    util.rem(71),
+    1.2047413793103448rem + 13.793103448275861vw,
+    util.rem(171)
+  );
+
+  &__wrapper {
+    display: grid;
+    justify-content: center;
+    gap: util.rem(40) util.rem(26);
+    animation: scrolling linear forwards;
+    animation-timeline: view();
+    animation-range: entry util.rem(50);
+    translate: 0 util.rem(200);
+
+    @include util.breakpoint(xl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    display: grid;
+    gap: util.rem(16);
+    justify-items: center;
+    text-align: center;
+    max-width: util.rem(573);
+
+    @media (util.rem(1200) >= width >= util.rem(720)) {
+      grid-template-columns: util.rem(48) auto;
+      grid-template-rows: auto auto;
+      justify-items: start;
+      text-align: left;
+    }
+
+    &-number {
+      grid-column: 1/2;
+      grid-row: 1/3;
+      align-self: center;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--color-dark-purple);
+      border-radius: 50%;
+      width: util.rem(48);
+      height: util.rem(48);
+      aspect-ratio: 1;
+      margin-block-end: util.rem(8);
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(
+        util.rem(20),
+        1.1206896551724137rem + 0.5517241379310345vw,
+        util.rem(24)
+      );
+
+      @include util.breakpoint(xl) {
+        width: util.rem(56);
+        height: util.rem(56);
+      }
+    }
+  }
+}
+
+@keyframes scrolling {
+  to {
+    translate: 0 0;
+  }
+}

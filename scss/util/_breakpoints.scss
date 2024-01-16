@@ -1,0 +1,15 @@
+@use 'functions' as fn;
+
+$breakpoints: (
+  'sm': fn.em(540),
+  'md': fn.em(768),
+  'lg': fn.em(992),
+  'xl': fn.em(1200),
+  'xxl': fn.em(1440),
+);
+
+@mixin breakpoint($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}

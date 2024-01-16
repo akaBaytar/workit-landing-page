@@ -1,0 +1,51 @@
+@use '../util' as util;
+
+.button {
+  display: inline-block;
+  color: var(--color-green);
+  border: util.rem(2) var(--color-green) solid;
+  padding: util.rem(13) util.rem(21) util.rem(16);
+  transition: 0.2s ease-in-out;
+  transition-property: color, background-color;
+
+  &:hover {
+    color: var(--color-dark-purple);
+    background-color: var(--color-green);
+  }
+
+  @include util.breakpoint(lg) {
+    padding: util.rem(13) util.rem(32) util.rem(16);
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: util.rem(20);
+  bottom: util.rem(20);
+
+  & .button {
+    position: relative;
+    display: none;
+    cursor: pointer;
+    color: var(--color-white);
+    padding: util.rem(12);
+    border: none;
+    border-radius: 50%;
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: util.rem(3);
+      z-index: 1;
+      border-radius: 50%;
+      background-color: var(--color-white);
+    }
+
+    & > img {
+      position: relative;
+      width: util.rem(24);
+      border-radius: 50%;
+      z-index: 2;
+    }
+  }
+}

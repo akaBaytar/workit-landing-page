@@ -1,0 +1,96 @@
+@use '../util' as util;
+
+.faqs {
+  margin-block-start: util.rem(120);
+
+  &__wrapper {
+    padding: util.rem(50);
+    background-color: var(--color-whitish);
+    animation: scrolling linear forwards;
+    animation-timeline: view();
+    animation-range: entry util.rem(50);
+    translate: 0 util.rem(500);
+  }
+
+  &__headline {
+    display: flex;
+    gap: util.rem(16);
+    align-items: center;
+    justify-content: center;
+
+    @include util.breakpoint(md) {
+      justify-content: start;
+    }
+  }
+
+  &__icon {
+    width: util.rem(32);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: util.rem(32);
+  }
+}
+
+.faq {
+  overflow: hidden;
+  cursor: pointer;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-block-end: util.rem(8);
+  }
+
+  &__question {
+    flex: 1;
+  }
+
+  &__icon {
+    flex: 0.1;
+    rotate: 180deg;
+    transition: 0.3s transform ease;
+
+    @include util.breakpoint(sm) {
+      flex: 0.05;
+    }
+
+    @include util.breakpoint(lg) {
+      flex: 0.025;
+    }
+  }
+
+  &__answer {
+    position: relative;
+    max-height: 0;
+    margin-inline-start: util.rem(12);
+    transition: all 0.3s ease;
+    cursor: text;
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: '';
+      height: 100%;
+      width: util.rem(3);
+      background-color: var(--color-green);
+      left: util.rem(-9);
+    }
+  }
+}
+
+.faq.show .faq__answer {
+  max-height: util.rem(500);
+}
+
+.faq.show .faq__icon {
+  transform: rotate(180deg);
+}
+
+@keyframes scrolling {
+  to {
+    translate: 0 0;
+  }
+}

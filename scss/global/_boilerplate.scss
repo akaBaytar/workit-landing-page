@@ -1,0 +1,86 @@
+@use '../util/' as util;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  margin-inline: auto;
+  width: min(100% - util.rem(16) * 2, util.rem(1100));
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.curved {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 49% 0 0 0;
+    width: 100%;
+    background-image: url('../../assets/images/curved-hero-bottom.svg');
+    background-repeat: no-repeat;
+    background-size: 100%
+      clamp(
+        util.rem(71),
+        1.2047413793103448rem + 13.793103448275861vw,
+        util.rem(171)
+      );
+  }
+
+  &.light {
+    &::after {
+      height: clamp(
+        util.rem(71),
+        1.2047413793103448rem + 13.793103448275861vw,
+        util.rem(171)
+      );
+      background-image: url('../../assets/images/curved-hero-bottom-light.svg');
+    }
+  }
+}

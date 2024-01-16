@@ -1,0 +1,40 @@
+@use '../util' as util;
+
+.footer {
+  margin-block-start: util.rem(64);
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: util.rem(16);
+  }
+
+  &__logo {
+    margin-block-end: util.rem(32);
+  }
+
+  &__links {
+    display: flex;
+    gap: util.rem(16);
+    margin-block-end: util.rem(32);
+  }
+
+  &__link {
+    position: relative;
+  }
+
+  &__link > img {
+    width: util.rem(24);
+  }
+}
+
+.copyright {
+  font-size: util.rem(13);
+
+  & img {
+    display: inline-block;
+    height: util.rem(10);
+  }
+}
